@@ -391,7 +391,7 @@ def api(request, type, username, prefix):
 
     host = "%s.%s.%s" % (prefix, username, settings.DNS_DOMAIN)
     if type == 'dns':
-        res = DNSLog.objects.filter(host=host)
+        res = DNSLog.objects.filter(host__contains=host)
         if len(res) > 0:
             result = True
     elif type == 'web':
